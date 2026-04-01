@@ -25,7 +25,7 @@ def init_gemini():
     genai.configure(api_key=api_key)
     
     # 404 hatasını çözmek için tam model yolunu (ID) kullanıyoruz
-    model = genai.GenerativeModel('models/gemini-1.5-flash')
+    model = genai.GenerativeModel('models/gemini-pro')
     
     return model
 # ─── BERTürk Duygu/Kaygı Analizi ─────────────────────────────────────────────
