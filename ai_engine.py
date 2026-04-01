@@ -16,17 +16,10 @@ from safety_filter import check_crisis, check_forbidden_content, get_crisis_resp
 # ─── Gemini Kurulumu ──────────────────────────────────────────────────────────
 
 def init_gemini():
-    """Gemini API'yi başlatır."""
     api_key = st.secrets.get("GEMINI_API_KEY", "")
-    if not api_key:
-        st.error("⚠️ Gemini API anahtarı bulunamadı.")
-        st.stop()
-    
     genai.configure(api_key=api_key)
-    
-    # 404 hatasını çözmek için tam model yolunu (ID) kullanıyoruz
-    model = genai.GenerativeModel('models/gemini-pro')
-    
+    # En kararlı isimlendirme budur:
+    model = genai.GenerativeModel('gemini-pro') 
     return model
 # ─── BERTürk Duygu/Kaygı Analizi ─────────────────────────────────────────────
 
