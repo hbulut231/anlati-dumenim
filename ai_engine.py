@@ -24,11 +24,9 @@ def init_gemini():
     
     genai.configure(api_key=api_key)
     
-    # Hata alma ihtimaline karşı model ismini 'gemini-1.5-flash' olarak sadeleştiriyoruz
-    # ve safety_settings formatını güncelliyoruz
-    model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash"
-    )
+    # Model ismini tırnak içinde en sade haliyle yazıyoruz.
+    # Eğer hata devam ederse "gemini-1.5-pro" deneyebilirsiniz.
+    model = genai.GenerativeModel('gemini-1.5-flash')
     return model
 
 # ─── BERTürk Duygu/Kaygı Analizi ─────────────────────────────────────────────
