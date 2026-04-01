@@ -24,11 +24,10 @@ def init_gemini():
     
     genai.configure(api_key=api_key)
     
-    # Model ismini tırnak içinde en sade haliyle yazıyoruz.
-    # Eğer hata devam ederse "gemini-1.5-pro" deneyebilirsiniz.
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # 404 hatasını çözmek için tam model yolunu (ID) kullanıyoruz
+    model = genai.GenerativeModel('models/gemini-1.5-flash')
+    
     return model
-
 # ─── BERTürk Duygu/Kaygı Analizi ─────────────────────────────────────────────
 
 @st.cache_resource(show_spinner="BERTürk modeli yükleniyor...")
