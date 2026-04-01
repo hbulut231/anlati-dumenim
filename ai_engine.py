@@ -19,21 +19,17 @@ def init_gemini():
     """Gemini API'yi başlatır."""
     api_key = st.secrets.get("GEMINI_API_KEY", "")
     if not api_key:
-        st.error("⚠️ Gemini API anahtarı bulunamadı. `.streamlit/secrets.toml` dosyasını kontrol edin.")
+        st.error("⚠️ Gemini API anahtarı bulunamadı.")
         st.stop()
+    
     genai.configure(api_key=api_key)
+    
+    # Hata alma ihtimaline karşı model ismini 'gemini-1.5-flash' olarak sadeleştiriyoruz
+    # ve safety_settings formatını güncelliyoruz
     model = genai.GenerativeModel(
-        model_name="models/gemini-1.5-flash",
-        system_instruction=GEMINI_SYSTEM_PROMPT,
-        safety_settings=[
-            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_LOW_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_LOW_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_LOW_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_LOW_AND_ABOVE"},
-        ],
+        model_name="gemini-1.5-flash"
     )
     return model
-
 
 # ─── BERTürk Duygu/Kaygı Analizi ─────────────────────────────────────────────
 
